@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <p id="demo"></p>
+  <script>
+    let randNum = Math.floor(Math.random() * 10) +1;
+    let guesses = 0;
+    let guess;
+    let feedback = "Guess a number between 1 and 10.";
+    let quit = false;
+    while (!quit) {
+      guess = prompt(feedback);
+      if (guess < randNum) {
+        guesses++;
+        feedback = "Your guess was too low, guess again.";
+      }
+      else if (guess > randNum) {
+        guesses++;
+        feedback = "Your guess was too high, guess again.";
+      }
+      else if (guess == randNum) {
+        feedback = "You guessed it in " + (guesses+1) + " guesses!";
+        guess = prompt(feedback);
+        guess = prompt("Play again?");
+        if (guess.toLowerCase() === "no") {
+          quit = true;
+        }
+        else {
+          feedback = "Guess a number between 1 and 10.";
+          guesses = 0;
+          randNum = Math.floor(Math.random() * 10) +1;
+        }
+      }
+      else {
+        quit = true;
+      }
+    }
+    
+  </script>
+</body>
+
+</html>
